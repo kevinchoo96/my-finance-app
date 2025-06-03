@@ -37,7 +37,7 @@ class ExpensePolicy
      */
     public function update(User $user, Expense $expense): bool
     {
-        return isset($user);
+        return $expense->user_id == $user->id;
     }
 
     /**
@@ -45,7 +45,7 @@ class ExpensePolicy
      */
     public function delete(User $user, Expense $expense): bool
     {
-        return isset($user);
+        return $expense->user_id == $user->id;
     }
 
     /**

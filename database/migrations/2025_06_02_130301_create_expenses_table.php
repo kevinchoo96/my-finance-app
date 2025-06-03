@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('description', 50);
             $table->decimal('amount', 10, 2)->check('amount >= 0');
-            $table->timestamp('transacted_at');
+            $table->date('expense_date')->index();
             $table->timestamps();
             $table->softDeletes();
         });

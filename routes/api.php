@@ -12,6 +12,6 @@ Route::post('/login', [UserController::class, 'login'])->name('users.login');
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
-    Route::get('/summary', [ExpenseController::class, 'summary'])->name('expenses.summary');
     Route::resource('expenses', ExpenseController::class)->only(['index', 'store', 'update', 'destroy']);
+    Route::get('/expenses/summary/{yearMonth}', [ExpenseController::class, 'summary'])->name('expenses.summary');
 });

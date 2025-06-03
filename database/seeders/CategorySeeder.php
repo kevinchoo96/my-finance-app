@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
             'Shopping',
             'Bills & Utilities',
             'Entertainment',
-            'others'
+            'Others'
         ];
 
         foreach($categoriesList as $categoryName)
