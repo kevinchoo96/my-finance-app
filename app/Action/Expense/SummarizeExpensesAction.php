@@ -19,7 +19,6 @@ class SummarizeExpensesAction
 
         $summary = Expense::with('category')
         ->select('category_id')
-        ->selectRaw('COUNT(*) as total_expenses')
         ->selectRaw('SUM(amount) as total_amount')
         ->where('expense_date', '>=', $startOfMonth)
         ->where('expense_date', '<=', $endOfMonth)

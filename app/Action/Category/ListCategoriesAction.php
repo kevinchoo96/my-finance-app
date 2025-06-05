@@ -10,8 +10,7 @@ class ListCategoriesAction
 {
     public function execute(): Collection
     {
-        $categories = Category::orderBy('name', 'asc')
-                    ->get();
+        $categories = Category::get();
 
         return $categories;
     }
