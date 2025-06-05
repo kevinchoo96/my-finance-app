@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -12,6 +13,7 @@ Route::post('/login', [UserController::class, 'login'])->name('users.login');
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
+    Route::resource('categories', CategoryController::class)->only(['index']);
     Route::resource('expenses', ExpenseController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::get('/expenses/summary/{yearMonth}', [ExpenseController::class, 'summary'])->name('expenses.summary');
 });

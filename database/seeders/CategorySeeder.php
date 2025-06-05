@@ -14,17 +14,18 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $categoriesList = [
-            'Food & Dining',
-            'Transportation',
-            'Shopping',
-            'Bills & Utilities',
-            'Entertainment',
-            'Others'
+            'food' => 'Food & Dining',
+            'transportation' => 'Transportation',
+            'shopping' => 'Shopping',
+            'bill' => 'Bills & Utilities',
+            'entertainment' => 'Entertainment',
+            'others' => 'Others'
         ];
 
-        foreach($categoriesList as $categoryName)
+        foreach($categoriesList as $categoryType => $categoryName)
         {
             $category = (new Category());
+            $category->type = $categoryType;
             $category->name = $categoryName;
             $category->save();
         }

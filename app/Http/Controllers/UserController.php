@@ -7,6 +7,7 @@ use App\Action\User\RegisterNewUserAction;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -28,7 +29,10 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $token = Auth::user()->currentAccessToken();
+
+        $token->expires_at = now();
+        $token->save();
 
         return response()->json(['message' => 'Logged out']);
     }

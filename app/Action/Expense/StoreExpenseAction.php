@@ -13,7 +13,7 @@ class StoreExpenseAction
         $expense = (new Expense());
 
         $expense->user_id = Auth::id();
-        $expense->category_id = Category::firstWhere('name', $request['category'])->id;
+        $expense->category_id = Category::firstWhere('type', $request['category'])->id;
         $expense->description = $request['description'];
         $expense->amount = $request['amount'];
         $expense->expense_date = $request['expense_date'];

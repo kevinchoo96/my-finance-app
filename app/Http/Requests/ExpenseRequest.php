@@ -28,7 +28,7 @@ class ExpenseRequest extends FormRequest
         if($currentAction == 'store' || $currentAction == 'update')
         {
             $validationRules = [
-                'category' => ['required', 'exists:categories,name'],
+                'category' => ['required', 'exists:categories,type'],
                 'description' => ['required', 'min:1', 'max:50'],
                 'amount' => ['required', 'gt:0', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
                 'expense_date' => ['required', 'date'],

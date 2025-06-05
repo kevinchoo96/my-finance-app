@@ -11,7 +11,8 @@ class ListExpensesAction
 {
     public function execute(): Collection
     {
-        $expenses = Expense::where('user_id', Auth::id())
+        $expenses = Expense::with('category')
+                    ->where('user_id', Auth::id())
                     ->orderBy('expense_date', 'desc')
                     ->orderBy('id', 'desc')
                     ->get();
